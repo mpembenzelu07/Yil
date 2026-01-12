@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Apply | Youth-Innovation Lab #19</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL CSS (Same as other pages) ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #0a2463;
+            --secondary: #3e92cc;
+            --accent: #ff595e;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        /* ===== CONTACT-SPECIFIC CSS ===== */
+        .page-hero {
+            background: linear-gradient(rgba(10, 36, 99, 0.9), rgba(62, 146, 204, 0.8)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0 80px;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            padding: 80px 0;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e9f5fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .application-info {
+            background-color: #f0f7ff;
+            padding: 60px 0;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .info-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 70px 0 20px;
+            margin-top: auto;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-flask"></i> Youth<span>Innovation</span>Lab
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Join Lab #19</h1>
+            <p>Apply to become a student innovator or get in touch with our team</p>
+        </div>
+    </section>
+
+    <section class="application-info">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2>Application Process</h2>
+                <p>How to become a student innovator at Lab #19</p>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Submit Application</h3>
+                    <p>Complete the online application form with your academic details and project ideas.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Interview</h3>
+                    <p>Selected candidates will be invited for an interview with our selection committee.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Project Proposal</h3>
+                    <p>Develop a detailed project proposal addressing a real-world problem.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Join the Lab</h3>
+                    <p>Successful applicants join the lab and begin working on their innovation projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div>
+                        <h2>Contact Information</h2>
+                        <p>Get in touch with our team for questions about applications, partnerships, or media inquiries.</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Our Location</h3>
+                            <p>Innovation Center, Room #19<br>University Tech Campus<br>123 Innovation Drive, CA 90210</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Contact Info</h3>
+                            <p>Phone: (555) 123-4567<br>Email: lab19@youthinnovation.edu<br>Hours: Mon-Fri 9am-6pm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h3>Application Deadline</h3>
+                            <p>Fall 2023 Cohort: August 15, 2023<br>Spring 2024 Cohort: December 10, 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Apply Now</h2>
+                    <form id="applicationForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="First Name" required>
+                            <input type="text" placeholder="Last Name" required>
+                        </div>
+                        
+                        <input type="email" placeholder="Email Address" required>
+                        <input type="tel" placeholder="Phone Number">
+                        
+                        <select required>
+                            <option value="">Select Your University</option>
+                            <option>University Tech Campus</option>
+                            <option>State University</option>
+                            <option>City College</option>
+                            <option>Other</option>
+                        </select>
+                        
+                        <select required>
+                            <option value="">Select Your Major</option>
+                            <option>Computer Science</option>
+                            <option>Engineering</option>
+                            <option>Environmental Science</option>
+                            <option>Biomedical Sciences</option>
+                            <option>Other</option>
+                        </select>
+                        
+                        <textarea placeholder="Describe your project idea or innovation concept (500 words maximum)" required></textarea>
+                        
+                        <button type="submit" class="btn">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px;">
+                <div>
+                    <div style="font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center;">
+                        <i class="fas fa-flask" style="color: var(--accent); margin-right: 10px;"></i> YouthInnovationLab
+                    </div>
+                    <p>Transforming students into innovators who build real-world solutions.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 25px;">Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p>&copy; 2023 Youth-Innovation Lab #19. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your application! We will review it and contact you within 2 weeks.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
