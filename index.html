@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Youth-Innovation Lab #19</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL CSS FOR ALL PAGES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #0a2463;
+            --secondary: #3e92cc;
+            --accent: #ff595e;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(rgba(10, 36, 99, 0.9), rgba(62, 146, 204, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0 100px;
+            flex-grow: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background-color: #f0f7ff;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 70px 0 20px;
+            margin-top: auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                text-align: center;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-flask"></i> Youth<span>Innovation</span>Lab
+            </a>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Youth-Innovation Lab <span class="highlight">#19</span></h1>
+            <p>Transforming top students into innovators who build solutions for society's most pressing challenges. Your brightest minds become your problem-solvers.</p>
+            <div class="hero-btns">
+                <a href="projects.html" class="btn">View Our Projects</a>
+                <a href="contact.html" class="btn btn-secondary">Join Our Lab</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>How We Transform Students</h2>
+                <p>Our 4-step process to turn academic excellence into real-world innovation</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Identify Talent</h3>
+                    <p>We scout and select top-performing students with demonstrated problem-solving abilities and creative thinking.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Provide Resources</h3>
+                    <p>State-of-the-art lab facilities, cutting-edge technology, and mentorship from industry experts.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Foster Innovation</h3>
+                    <p>Structured programs that guide students from idea generation to prototype development.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Launch Solutions</h3>
+                    <p>Support in turning prototypes into viable solutions that address real community problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Innovate?</h2>
+                <p>Join Lab #19 and be part of the next generation of problem-solvers</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <p style="max-width: 800px; margin: 0 auto 30px;">
+                    Applications are open for the Fall 2023 cohort. We're looking for students who excel academically but also want to make a tangible impact on the world.
+                </p>
+                <a href="contact.html" class="btn">Apply Now</a>
+                <a href="about.html" class="btn btn-secondary" style="margin-left: 15px;">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-flask"></i> YouthInnovationLab
+                    </div>
+                    <p>Transforming top students into innovators who build solutions for society's most pressing challenges. Lab #19 is leading the way in youth-driven innovation.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About the Lab</a></li>
+                        <li><a href="projects.html">Our Projects</a></li>
+                        <li><a href="team.html">Innovation Team</a></li>
+                        <li><a href="contact.html">Contact & Apply</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Other Pages</h3>
+                    <ul>
+                        <li><a href="#">Lab Facilities</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Events Calendar</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Youth-Innovation Lab #19. All rights reserved. | Empowering young innovators since 2018</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+                document.querySelector('#mobileToggle i').classList.remove('fa-times');
+                document.querySelector('#mobileToggle i').classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
